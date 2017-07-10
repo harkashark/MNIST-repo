@@ -8,13 +8,12 @@ class Network(object):
         self.weights = np.random.randn(sizes[0], sizes[1])
 
     def feedforward(self, input_image, biases): #input_image as a member of train_images or other list
-#        output_vector = [] ==== redundant
         input_dot_weights = np.dot(np.asarray(input_image), self.weights)
         x = np.add(input_dot_weights, self.biases)
         return sigmoid_f(x)
 
 def sigmoid_f(x):
-    return 1.0 / (1.0 + np.exp(-x))
+    return 1.0 / (1.0 + np.exp(-(x - np.max(x))))
 
 net = Network((784, 10))
 correct_count = 0
