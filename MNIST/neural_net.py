@@ -1,3 +1,4 @@
+"""Building a simple architecture, no hidden layers, no backprop or SGD"""
 import numpy as np
 import load_data as ld
 
@@ -8,7 +9,6 @@ class Network(object):
         self.weights = np.random.randn(sizes[0], sizes[1])
 
     def feedforward(self, input_image, biases): #input_image as a member of train_images or other list
-#        output_vector = [] ==== redundant
         input_dot_weights = np.dot(np.asarray(input_image), self.weights)
         x = np.add(input_dot_weights, self.biases)
         return sigmoid_f(x)
